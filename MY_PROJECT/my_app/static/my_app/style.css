@@ -1,0 +1,230 @@
+/* ===== Global Styling ===== */
+body {
+    background: #f4f6fb;
+    font-family: Arial, sans-serif;
+    color: #263247;
+    min-height: 100vh;
+}
+
+/* ===== Main Container ===== */
+.todo-container {
+    max-width: 750px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #ded8d8;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(25, 35, 60, 0.08);
+}
+
+/* ===== Headings ===== */
+.todo-container h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #202b45;
+}
+
+.subtitle {
+    text-align: center;
+    color: #8490a5;
+    margin-bottom: 28px;
+}
+
+/* ===== Forms and Inputs ===== */
+.form-control,
+.form-select {
+    border: 1px solid #dce2ee;
+    border-radius: 9px;
+    padding: 11px 13px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #7966ed;
+    box-shadow: 0 0 0 3px rgba(121, 102, 237, 0.13);
+}
+
+/* ===== General Buttons ===== */
+.btn {
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Add Button */
+.btn-add {
+    background: #6c5ce7;
+    color: white;
+    border: none;
+}
+
+.btn-add:hover {
+    background: #5845d6;
+    color: white;
+}
+
+/* Update Button */
+.btn-update {
+    background: #168a70;
+    color: white;
+    border: none;
+}
+
+.btn-update:hover {
+    background: #10735d;
+    color: white;
+}
+
+/* Delete Button */
+.btn-delete {
+    background: #fff0f0;
+    color: #d93646;
+    border: 1px solid #ffd5d8;
+}
+
+.btn-delete:hover {
+    background: #d93646;
+    color: white;
+}
+
+/* Cancel Button */
+.btn-cancel {
+    background: #eef1f7;
+    color: #45516a;
+    border: none;
+}
+
+.btn-cancel:hover {
+    background: #dfe4ee;
+    color: #263247;
+}
+
+/* View / Secondary Button */
+.btn-view {
+    background: #eaf0ff;
+    color: #3f5fc5;
+    border: none;
+}
+
+.btn-view:hover {
+    background: #d9e4ff;
+    color: #304aa3;
+}
+
+/* ===== Task List ===== */
+.task-list {
+    margin-top: 25px;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 17px;
+    margin-bottom: 12px;
+    background: #ffffff;
+    border: 1px solid #e8ecf4;
+    border-radius: 11px;
+}
+
+.task-info {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.task-info h5 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.task-info p {
+    color: #7b879b;
+    margin-bottom: 6px;
+}
+
+/* ===== Task Status ===== */
+.task-status {
+    display: inline-block;
+    padding: 4px 9px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    background: #e7f7ee;
+    color: #16804a;
+}
+
+/* ===== Action Buttons ===== */
+.task-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.task-actions .btn {
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+/* ===== Empty Task Message ===== */
+.empty-message {
+    text-align: center;
+    padding: 30px 15px;
+    color: #8993a5;
+    background: #f8f9fc;
+    border: 1px dashed #d8deea;
+    border-radius: 12px;
+}
+
+/* ===== Form Page ===== */
+.task-form {
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.task-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+/* Django form error messages */
+.errorlist {
+    color: #d93646;
+    font-size: 14px;
+    padding-left: 20px;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 576px) {
+    .todo-container {
+        margin: 20px 12px;
+        padding: 20px 15px;
+    }
+
+    .todo-container h1 {
+        font-size: 25px;
+    }
+
+    .task-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .task-actions {
+        width: 100%;
+    }
+
+    .task-actions .btn {
+        flex: 1;
+    }
+}

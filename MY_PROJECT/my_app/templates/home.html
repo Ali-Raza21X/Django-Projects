@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="todo-container">
+
+        <h1>My Todo List</h1>
+        <p class="subtitle">Stay focused. Get things done.</p>
+
+        <div class="text-center mb-4">
+            <a href="{% url 'add_tasks' %}" class="btn btn-add">
+                + Add New Task
+            </a>
+        </div>
+
+        <div class="task-list">
+            {% for task in tasks %}
+                <div class="task-item">
+
+                    <div class="task-info">
+                        <h5>{{ task.title }}</h5>
+                        <p>{{ task.description }}</p>
+                        <span class="task-status">{{ task.status }}</span>
+                    </div>
+
+                    <div class="task-actions">
+                            <a href="{% url 'update_tasks' task.id %}"
+                            class="btn btn-update">Edit</a>
+
+                            <a href="{% url 'delete_tasks' task.id %}"
+                            class="btn btn-delete">Delete</a>
+                    </div>
+
+                </div>
+            {% empty %}
+                <div class="empty-message">
+                    <h5>No tasks yet!</h5>
+                    <p>Add your first task to get started.</p>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}
