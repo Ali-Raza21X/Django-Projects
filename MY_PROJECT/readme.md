@@ -58,7 +58,7 @@ django-todo-app/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/django-todo-app.git
+git clone https://github.com/Ali-Raza21X/django-projects.git
 cd django-todo-app
 ```
 
