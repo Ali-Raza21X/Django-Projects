@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block tilte %}Add Page{% endblock %}
+{% block content %}
+<h1>Expense Page</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Add Expenses</button>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,72 @@
+
+{% extends "base.html" %}
+
+{% block title %}Edit Expense | Expense Tracker{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7 col-md-9">
+
+        <a href="{% url 'home' %}"
+           class="text-decoration-none text-secondary">
+            ← Back to expenses
+        </a>
+
+        <div class="content-card form-card mt-3">
+            <div class="p-4 border-bottom">
+                <p class="text-primary fw-semibold small mb-1">
+                    EDIT RECORD
+                </p>
+                <h2 class="page-title mb-2">Update Expense</h2>
+                <p class="text-secondary mb-0">
+                    Make changes to your expense details.
+                </p>
+            </div>
+
+            <form method="POST" class="p-4">
+                {% csrf_token %}
+
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        Please correct the errors below.
+                        {{ form.errors }}
+                    </div>
+                {% endif %}
+
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label for="{{ field.id_for_label }}"
+                               class="form-label fw-semibold">
+                            {{ field.label }}
+                        </label>
+
+                        {{ field }}
+
+                        {% if field.help_text %}
+                            <div class="form-text">{{ field.help_text }}</div>
+                        {% endif %}
+
+                        {% for error in field.errors %}
+                            <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary px-4">
+                        Save Changes
+                    </button>
+
+                    <a href="{% url 'home' %}"
+                       class="btn btn-light border px-4">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
