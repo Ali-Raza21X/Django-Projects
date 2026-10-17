@@ -1,0 +1,65 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} | InventoryMS{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+    <a href="{% url 'product_list' %}"
+       class="text-decoration-none text-secondary">← Back to Products</a>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between
+                align-items-sm-center gap-3 mt-3">
+        <div>
+            <h1 class="page-heading">{{ product.name }}</h1>
+            <p class="page-subtitle">Product details and stock information</p>
+        </div>
+
+        <a href="{% url 'product_update' product.id %}"
+           class="btn btn-primary">Edit Product</a>
+    </div>
+</div>
+
+<div class="card border-0">
+    <div class="card-body-custom">
+        <div class="row g-4">
+            <div class="col-12 col-md-6">
+                <p class="detail-label">Product Name</p>
+                <div class="detail-value">{{ product.name }}</div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <p class="detail-label">SKU</p>
+                <div class="detail-value">{{ product.sku }}</div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <p class="detail-label">Price</p>
+                <div class="detail-value">{{ product.price }}</div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <p class="detail-label">Quantity</p>
+                <div class="detail-value">{{ product.quantity }}</div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <p class="detail-label">Low-Stock Threshold</p>
+                <div class="detail-value">{{ product.low_stock_threshold }}</div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <p class="detail-label">Created At</p>
+                <div class="detail-value">{{ product.created_at|date:"M d, Y H:i" }}</div>
+            </div>
+
+            <div class="col-12">
+                <p class="detail-label">Description</p>
+                <div>{{ product.description|default:"No description provided."|linebreaksbr }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

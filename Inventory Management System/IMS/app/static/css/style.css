@@ -1,0 +1,265 @@
+
+:root {
+    --primary: #3457d5;
+    --primary-dark: #2444b5;
+    --page-bg: #f5f7fb;
+    --text-main: #202b3c;
+    --text-muted: #738096;
+    --border-color: #e5eaf2;
+}
+
+body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.app-navbar {
+    background: #172554;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.12);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.2px;
+}
+
+.brand-icon {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    font-size: 20px;
+}
+
+.navbar .nav-link {
+    color: #dbe5ff;
+}
+
+.navbar .nav-link:hover {
+    color: white;
+}
+
+.page-heading {
+    font-weight: 750;
+    letter-spacing: -0.7px;
+    margin-bottom: 6px;
+}
+
+.page-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+.card,
+.content-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.035);
+}
+
+.content-card {
+    overflow: hidden;
+}
+
+.card-header-custom {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    background: white;
+}
+
+.card-body-custom {
+    padding: 24px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid #dce3ee;
+    border-radius: 9px;
+    padding: 10px 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #8ca4ff;
+    box-shadow: 0 0 0 3px rgba(52, 87, 213, 0.12);
+}
+
+form p {
+    margin-bottom: 18px;
+}
+
+form p label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 7px;
+    color: #344054;
+}
+
+form p input,
+form p textarea,
+form p select {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #dce3ee;
+    border-radius: 9px;
+    padding: 10px 12px;
+    background: white;
+}
+
+form p input:focus,
+form p textarea:focus,
+form p select:focus {
+    outline: none;
+    border-color: #8ca4ff;
+    box-shadow: 0 0 0 3px rgba(52, 87, 213, 0.12);
+}
+
+.helptext {
+    display: block;
+    margin-top: 5px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.errorlist {
+    color: #b42318;
+    font-size: 0.9rem;
+    padding-left: 20px;
+}
+
+.table {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.table thead th {
+    background: #f8faff;
+    color: #64748b;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    padding: 15px 18px;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table tbody td {
+    padding: 16px 18px;
+    border-color: #edf0f5;
+}
+
+.table tbody tr:hover {
+    background: #fafbff;
+}
+
+.product-name {
+    font-weight: 650;
+    color: var(--text-main);
+}
+
+.sku-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.stock-badge {
+    display: inline-block;
+    border-radius: 7px;
+    padding: 5px 9px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.stock-ok {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.stock-low {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.action-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.action-links .btn {
+    font-size: 0.82rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 45px 20px !important;
+    color: var(--text-muted);
+}
+
+.detail-label {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    font-size: 1.05rem;
+    font-weight: 650;
+    overflow-wrap: anywhere;
+}
+
+.app-footer {
+    border-top: 1px solid var(--border-color);
+    background: white;
+    color: var(--text-muted);
+    padding: 20px 0;
+    font-size: 0.88rem;
+}
+
+@media (max-width: 767px) {
+    .card-header-custom,
+    .card-body-custom {
+        padding: 17px;
+    }
+
+    .table thead th,
+    .table tbody td {
+        padding: 12px;
+    }
+
+    .page-heading {
+        font-size: 1.65rem;
+    }
+}
