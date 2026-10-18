@@ -1,0 +1,61 @@
+
+body {
+    background-color: #f5f7fb;
+    color: #212529;
+    font-family: Arial, sans-serif;
+}
+
+.main-content {
+    min-height: 80vh;
+}
+
+.navbar-brand {
+    letter-spacing: 0.3px;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+}
+
+.card-header {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.btn {
+    border-radius: 7px;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+form input,
+form textarea,
+form select {
+    display: block;
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid #ced4da;
+    border-radius: 7px;
+    background-color: #fff;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+footer {
+    color: #6c757d;
+}
+
+@media (max-width: 576px) {
+    .table {
+        font-size: 0.875rem;
+    }
+}
