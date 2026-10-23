@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Ali Raza | Python Backend Developer{% endblock %}</title>
+
+    <meta name="description" content="{% block meta_description %}Python and Django backend developer portfolio showcasing projects, technical skills, and experience.{% endblock %}">
+    <meta name="theme-color" content="#0b1120">
+    <meta name="color-scheme" content="dark">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+          rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body id="top">
+
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">
+        Skip to main content
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg site-navbar sticky-top"
+         aria-label="Main navigation">
+
+        <div class="container py-2">
+
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">
+                <span class="brand-icon">
+                    <i class="bi bi-code-slash"></i>
+                </span>
+                Ali <span class="brand-accent">Raza</span>
+                <span class="brand-role d-none d-md-inline">
+                    / Python Developer
+                </span>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+
+                <i class="bi bi-list text-light fs-2"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center
+                           gap-lg-1 mt-3 mt-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+                           href="{% url 'home' %}"
+                           {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>
+                            <i class="bi bi-house-door me-1"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'projects' or request.resolver_match.url_name == 'project_detail' %}active{% endif %}"
+                           href="{% url 'projects' %}"
+                           {% if request.resolver_match.url_name == 'projects' or request.resolver_match.url_name == 'project_detail' %}aria-current="page"{% endif %}>
+                            <i class="bi bi-folder2-open me-1"></i>
+                            Projects
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'skills' %}active{% endif %}"
+                           href="{% url 'skills' %}"
+                           {% if request.resolver_match.url_name == 'skills' %}aria-current="page"{% endif %}>
+                            <i class="bi bi-stars me-1"></i>
+                            Skills
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+                           href="{% url 'about' %}"
+                           {% if request.resolver_match.url_name == 'about' %}aria-current="page"{% endif %}>
+                            <i class="bi bi-person me-1"></i>
+                            About
+                        </a>
+                    </li>
+
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-primary nav-contact-btn"
+                           href="{% url 'contact' %}">
+                            Let's Talk
+                            <i class="bi bi-arrow-up-right ms-1"></i>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" tabindex="-1">
+        <div class="page-content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container py-5">
+
+            <div class="row g-5">
+
+                <!-- Brand -->
+                <div class="col-lg-5 col-md-6">
+
+                    <a class="navbar-brand fw-bold d-inline-block mb-3"
+                       href="{% url 'home' %}">
+                        <span class="brand-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </span>
+                        Ali <span class="brand-accent">Raza</span>
+                    </a>
+
+                    <p class="footer-description">
+                        Python backend developer building practical web
+                        applications with Django, databases, and clean code.
+                    </p>
+
+                    <div class="d-flex gap-3 mt-4">
+
+                        <a class="social-link"
+                           href="https://github.com/Ali-Raza21X"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Visit my GitHub profile">
+                            <i class="bi bi-github"></i>
+                        </a>
+
+                        <!-- Add your real LinkedIn URL when available -->
+                        <a class="social-link"
+                           href="#"
+                           aria-label="LinkedIn profile not configured">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="col-lg-3 col-md-6">
+
+                    <h2 class="footer-heading">Explore</h2>
+
+                    <ul class="list-unstyled footer-nav">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'projects' %}">Projects</a></li>
+                        <li><a href="{% url 'skills' %}">Skills</a></li>
+                        <li><a href="{% url 'about' %}">About Me</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+
+                </div>
+
+                <!-- Contact CTA -->
+                <div class="col-lg-4">
+
+                    <h2 class="footer-heading">
+                        Have a project in mind?
+                    </h2>
+
+                    <p class="footer-muted">
+                        I'm interested in Python backend opportunities,
+                        collaboration, and practical development projects.
+                    </p>
+
+                    <a href="{% url 'contact' %}" class="footer-link">
+                        Get in touch
+                        <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <hr class="footer-divider my-4">
+
+            <div class="d-flex flex-column flex-sm-row
+                        justify-content-between align-items-center gap-3">
+
+                <p class="footer-muted small mb-0">
+                    &copy; {% now "Y" %} Ali Raza. All rights reserved.
+                </p>
+
+                <a href="#top" class="footer-link small">
+                    Back to top
+                    <i class="bi bi-arrow-up ms-1"></i>
+                </a>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>

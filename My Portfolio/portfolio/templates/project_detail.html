@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}{{ detail.title }} | Project Details{% endblock %}
+
+{% block meta_description %}
+Explore {{ detail.title }}, a project developed using {{ detail.tech_stack }}.
+{% endblock %}
+
+{% block content %}
+
+<section class="project-detail-section">
+    <div class="container">
+
+        <!-- Breadcrumb -->
+        <div class="project-breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>/</span>
+            <a href="{% url 'projects' %}">Projects</a>
+            <span>/</span>
+            <span class="breadcrumb-current">{{ detail.title }}</span>
+        </div>
+
+        <!-- Project Heading -->
+        <div class="project-detail-header">
+            <span class="section-eyebrow">PROJECT DETAILS</span>
+
+            <h1 class="project-detail-title">
+                {{ detail.title }}
+            </h1>
+
+            {% if detail.short_description %}
+                <p class="project-detail-subtitle">
+                    {{ detail.short_description }}
+                </p>
+            {% endif %}
+
+            {% if detail.is_featured %}
+                <span class="featured-badge">
+                    <i class="bi bi-star-fill"></i>
+                    Featured Project
+                </span>
+            {% endif %}
+        </div>
+
+        <!-- Project Image -->
+        <div class="project-detail-image-wrapper">
+            {% if detail.image %}
+                <img
+                    src="{{ detail.image.url }}"
+                    alt="{{ detail.title }}"
+                    class="project-detail-image"
+                >
+            {% else %}
+                <div class="project-detail-image-placeholder">
+                    <i class="bi bi-code-slash"></i>
+                    <p>Project Preview</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Project Information -->
+        <div class="row g-4 project-detail-content">
+
+            <div class="col-lg-8">
+                <div class="detail-info-card">
+                    <h2 class="detail-section-title">
+                        <i class="bi bi-file-text"></i>
+                        About This Project
+                    </h2>
+
+                    {% if detail.description %}
+                        <div class="project-full-description">
+                            {{ detail.description|linebreaks }}
+                        </div>
+                    {% elif detail.short_description %}
+                        <p>{{ detail.short_description }}</p>
+                    {% else %}
+                        <p class="footer-muted">
+                            No detailed description is available yet.
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="detail-info-card project-overview-card">
+                    <h2 class="detail-section-title">
+                        <i class="bi bi-info-circle"></i>
+                        Project Overview
+                    </h2>
+
+                    <div class="overview-item">
+                        <span class="overview-label">Technology Stack</span>
+                        <div class="project-tech-stack">
+                            {% if detail.tech_stack %}
+                                
+                                <span class="tech-badge">
+                                    {{ detail.tech_stack }}
+                                </span>
+                            {% else %}
+                                <span class="footer-muted">Not specified</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% if detail.created_at %}
+                        <div class="overview-item">
+                            <span class="overview-label">Created</span>
+                            <span class="overview-value">
+                                {{ detail.created_at|date:"M d, Y" }}
+                            </span>
+                        </div>
+                    {% endif %}
+
+                    {% if detail.updated_at %}
+                        <div class="overview-item">
+                            <span class="overview-label">Last Updated</span>
+                            <span class="overview-value">
+                                {{ detail.updated_at|date:"M d, Y" }}
+                            </span>
+                        </div>
+                    {% endif %}
+
+                    {% if detail.is_featured %}
+                        <div class="overview-item">
+                            <span class="overview-label">Status</span>
+                            <span class="overview-value status-featured">
+                                <i class="bi bi-star-fill"></i>
+                                Featured
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Project Actions -->
+        <div class="project-detail-actions">
+
+            {% if detail.github_url %}
+                <a
+                    href="{{ detail.github_url }}"
+                    class="btn btn-primary-custom"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="bi bi-github"></i>
+                    View Source Code
+                </a>
+            {% endif %}
+
+            {% if detail.live_url %}
+                <a
+                    href="{{ detail.live_url }}"
+                    class="btn btn-outline-custom"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="bi bi-box-arrow-up-right"></i>
+                    Live Demo
+                </a>
+            {% endif %}
+
+            <a href="{% url 'projects' %}" class="btn btn-outline-custom">
+                <i class="bi bi-arrow-left"></i>
+                All Projects
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

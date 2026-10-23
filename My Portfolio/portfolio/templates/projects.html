@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}Projects | Ali Raza - Python Backend Developer{% endblock %}
+
+{% block meta_description %}
+Explore Python, Django, Flask, and database projects built by Ali Raza.
+{% endblock %}
+
+{% block content %}
+
+<!-- Projects Hero -->
+<section class="projects-hero py-5">
+    <div class="container py-lg-4">
+        <span class="section-eyebrow">MY PORTFOLIO</span>
+
+        <h1 class="projects-page-title mt-3">
+            Projects I've <span>Built</span>
+        </h1>
+
+        <p class="section-description mt-3 mb-0">
+            Practical applications, backend systems, and learning projects
+            built using Python, Django, SQL, and related technologies.
+        </p>
+
+        <div class="projects-summary mt-4">
+            <span><i class="bi bi-code-square me-2"></i>Backend Development</span>
+            <span><i class="bi bi-database me-2"></i>Database Applications</span>
+            <span><i class="bi bi-github me-2"></i>Hands-on Projects</span>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Collection -->
+<section class="section-padding">
+    <div class="container">
+
+        <div class="d-flex flex-wrap justify-content-between
+                    align-items-end gap-3 mb-4">
+            <div>
+                <h2 class="section-title mb-2">All Projects</h2>
+                <p class="section-description mb-0">
+                    Browse the applications and experiments in my portfolio.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+
+            {% for project in projects %}
+            <div class="col-md-6 col-xl-4">
+                <article class="project-card h-100">
+
+                    {% if project.image %}
+                    <div class="project-image-wrapper">
+                        <img src="{{ project.image.url }}"
+                             alt="{{ project.title }}"
+                             class="project-image"
+                             loading="lazy">
+                    </div>
+                    {% else %}
+                    <div class="project-image-placeholder">
+                        <i class="bi bi-code-square"></i>
+                    </div>
+                    {% endif %}
+
+                    <div class="project-card-body">
+
+                        <div class="d-flex justify-content-between
+                                    align-items-center flex-wrap gap-2 mb-3">
+                            <span class="project-category">
+                                <i class="bi bi-folder2-open me-1"></i>
+                                Project
+                            </span>
+
+                            {% if project.is_featured %}
+                            <span class="featured-badge">
+                                <i class="bi bi-star-fill me-1"></i>
+                                Featured
+                            </span>
+                            {% endif %}
+                        </div>
+
+                        <h2 class="project-title">{{ project.title }}</h2>
+
+                        {% if project.short_description %}
+                        <p class="project-short-description">
+                            {{ project.short_description }}
+                        </p>
+                        {% endif %}
+
+                        {% if project.description %}
+                        <p class="project-description">
+                            {{ project.description|truncatewords:28 }}
+                        </p>
+                        {% endif %}
+
+                        {% if project.tech_stack %}
+                        <div class="project-tech-stack">
+                            <span class="tech-badge">
+                                {{ project.tech_stack }}
+                            </span>
+                        </div>
+                        {% endif %}
+
+                        <div class="project-meta">
+                            <span>
+                                <i class="bi bi-calendar3 me-1"></i>
+                                Created {{ project.created_at|date:"M Y" }}
+                            </span>
+
+                            <span>
+                                <i class="bi bi-arrow-repeat me-1"></i>
+                                Updated {{ project.updated_at|date:"M Y" }}
+                            </span>
+                        </div>
+
+                        <div class="project-actions mt-3">
+                            <a href="{% url 'project_detail' project.id %}"
+                               class="btn btn-primary">
+                                View Details
+                                <i class="bi bi-arrow-right ms-1"></i>
+                            </a>
+
+                            {% if project.github_url %}
+                            <a href="{{ project.github_url }}"
+                               class="btn btn-outline-light"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="View {{ project.title }} on GitHub">
+                                <i class="bi bi-github"></i>
+                            </a>
+                            {% endif %}
+
+                            {% if project.live_url %}
+                            <a href="{{ project.live_url }}"
+                               class="btn btn-outline-light"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Open {{ project.title }} live demo">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </article>
+            </div>
+
+            {% empty %}
+            <div class="col-12">
+                <div class="empty-projects text-center py-5 px-3">
+                    <i class="bi bi-folder2-open empty-project-icon"></i>
+                    <h2 class="mt-3">No Projects Yet</h2>
+                    <p class="text-secondary mb-0">
+                        Projects will appear here once they have been added.
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="pb-5">
+    <div class="container">
+        <div class="contact-cta">
+            <div>
+                <span class="section-eyebrow">LET'S CONNECT</span>
+                <h2 class="section-title mt-2">
+                    Interested in working together?
+                </h2>
+                <p class="section-description mb-0">
+                    Let's discuss a development opportunity or project.
+                </p>
+            </div>
+
+            <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">
+                Contact Me <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

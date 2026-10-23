@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Technical Skills | Portfolio{% endblock %}
+
+{% block meta_description %}
+Explore my technical skills, programming knowledge, backend development tools, and proficiency levels.
+{% endblock %}
+
+{% block content %}
+
+<section class="skills-page">
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="skills-hero">
+            <span class="section-eyebrow">WHAT I WORK WITH</span>
+
+            <h1 class="skills-main-title">
+                My Technical <span class="hero-highlight">Skills</span>
+            </h1>
+
+            <p class="skills-intro">
+                Technologies and tools I'm learning and using to build
+                practical applications, work with databases, and develop
+                backend solutions.
+            </p>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-section">
+
+            <div class="skills-section-heading">
+                <div>
+                    <h2 class="section-title">Technical Toolkit</h2>
+                    <p class="section-description">
+                        My current skills and proficiency levels.
+                    </p>
+                </div>
+
+                <span class="skills-count">
+                    <i class="bi bi-grid-3x3-gap"></i>
+                    {{ skills|length }} Skills
+                </span>
+            </div>
+
+            <div class="row g-4">
+
+                {% for skill in skills %}
+
+                    <div class="col-sm-6 col-lg-4">
+
+                        <article class="skill-card">
+
+                            <div class="skill-card-top">
+                                <div class="skill-icon">
+                                    {% if "python" in skill.name|lower %}
+                                        <i class="bi bi-filetype-py"></i>
+                                    {% elif "django" in skill.name|lower %}
+                                        <i class="bi bi-globe2"></i>
+                                    {% elif "flask" in skill.name|lower %}
+                                        <i class="bi bi-cup-hot"></i>
+                                    {% elif "sql" in skill.name|lower or "database" in skill.name|lower %}
+                                        <i class="bi bi-database"></i>
+                                    {% elif "git" in skill.name|lower or "github" in skill.name|lower %}
+                                        <i class="bi bi-git"></i>
+                                    {% elif "api" in skill.name|lower %}
+                                        <i class="bi bi-diagram-3"></i>
+                                    {% else %}
+                                        <i class="bi bi-code-slash"></i>
+                                    {% endif %}
+                                </div>
+
+                                <span class="skill-proficiency
+                                    {% if skill.proficiency == 'ADV' %}
+                                        proficiency-advanced
+                                    {% elif skill.proficiency == 'INT' %}
+                                        proficiency-intermediate
+                                    {% else %}
+                                        proficiency-beginner
+                                    {% endif %}">
+                                    {{ skill.get_proficiency_display }}
+                                </span>
+                            </div>
+
+                            <h3 class="skill-name">{{ skill.name }}</h3>
+
+                            {% if skill.category %}
+                                <p class="skill-category">
+                                    <i class="bi bi-collection"></i>
+                                    {{ skill.category }}
+                                </p>
+                            {% endif %}
+
+                            <div class="skill-level-track"
+                                 role="progressbar"
+                                 aria-label="{{ skill.name }} proficiency"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"
+                                 aria-valuenow="{% if skill.proficiency == 'ADV' %}90{% elif skill.proficiency == 'INT' %}60{% else %}30{% endif %}">
+
+                                <div class="skill-level-fill
+                                    {% if skill.proficiency == 'ADV' %}
+                                        level-advanced
+                                    {% elif skill.proficiency == 'INT' %}
+                                        level-intermediate
+                                    {% else %}
+                                        level-beginner
+                                    {% endif %}"
+                                    {% if skill.proficiency == 'ADV' %}
+                                        style="width: 90%;"
+                                    {% elif skill.proficiency == 'INT' %}
+                                        style="width: 60%;"
+                                    {% else %}
+                                        style="width: 30%;"
+                                    {% endif %}>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                {% empty %}
+
+                    <div class="col-12">
+                        <div class="skills-empty-state">
+                            <i class="bi bi-code-square"></i>
+                            <h3>No skills added yet</h3>
+                            <p>
+                                My technical skills will appear here once
+                                they have been added.
+                            </p>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- Learning Mindset -->
+        <div class="skills-cta">
+            <div class="skills-cta-icon">
+                <i class="bi bi-lightbulb"></i>
+            </div>
+
+            <div class="skills-cta-content">
+                <h2>Always Learning, Always Building</h2>
+                <p>
+                    I'm continuously improving my programming skills through
+                    practice, personal projects, and exploring new backend
+                    technologies.
+                </p>
+            </div>
+
+            <a href="{% url 'projects' %}" class="btn btn-primary-custom">
+                Explore My Projects
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

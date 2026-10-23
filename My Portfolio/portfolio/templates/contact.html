@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Me | Portfolio{% endblock %}
+
+{% block meta_description %}
+Get in touch with me for Python backend development opportunities, collaborations, and project inquiries.
+{% endblock %}
+
+{% block content %}
+
+<section class="contact-page">
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="contact-hero">
+            <span class="section-eyebrow">LET'S CONNECT</span>
+
+            <h1 class="contact-main-title">
+                Get in <span class="hero-highlight">Touch</span>
+            </h1>
+
+            <p class="contact-intro">
+                Have a project idea, an opportunity, or a question?
+                Send me a message. I'd be happy to hear from you.
+            </p>
+        </div>
+
+        <div class="row g-4 contact-layout">
+
+            <!-- Contact Information -->
+            <div class="col-lg-5">
+                <div class="contact-info-card">
+
+                    <span class="section-eyebrow">CONTACT INFORMATION</span>
+
+                    <h2 class="contact-info-title">
+                        Let's start a conversation.
+                    </h2>
+
+                    <p class="contact-info-description">
+                        I'm interested in backend development, Python projects,
+                        and opportunities to learn and collaborate.
+                    </p>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+
+                        <div>
+                            <h3>Development</h3>
+                            <p>Python & Backend Development</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="bi bi-github"></i>
+                        </div>
+
+                        <div>
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/Ali-Raza21X"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                View my projects
+                                <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="bi bi-linkedin"></i>
+                        </div>
+
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p>Connect with me professionally</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-note">
+                        <i class="bi bi-chat-dots"></i>
+                        <p>
+                            Use the form to send your message. I'll review
+                            the details and respond when possible.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+                <div class="contact-form-card">
+
+                    <div class="contact-form-heading">
+                        <h2>Send a Message</h2>
+                        <p>Fill in the details below to get in touch.</p>
+                    </div>
+
+                    <form action="" method="post" class="portfolio-contact-form">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+
+                        {% for field in form %}
+                            {% if field.name != 'is_read' %}
+                            <div class="contact-form-field">
+
+                                <label for="{{ field.id_for_label }}">
+                                    {{ field.label }}
+                                    {% if field.field.required %}
+                                        <span class="required-mark">*</span>
+                                    {% endif %}
+                                </label>
+
+                                {{ field }}
+
+                                {% if field.help_text %}
+                                    <small class="contact-help-text">
+                                        {{ field.help_text }}
+                                    </small>
+                                {% endif %}
+
+                                {% for error in field.errors %}
+                                    <p class="contact-field-error">
+                                        {{ error }}
+                                    </p>
+                                {% endfor %}
+
+                            </div>
+                             {% endif %}
+                        {% endfor %}
+
+                        <button type="submit" class="contact-submit-btn">
+                            Send Message
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

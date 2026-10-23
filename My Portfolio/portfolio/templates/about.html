@@ -1,0 +1,195 @@
+
+{% extends "base.html" %}
+
+{% block title %}About Me | Portfolio{% endblock %}
+
+{% block meta_description %}
+Learn about my background, professional experience, education, and journey as a Python backend developer.
+{% endblock %}
+
+{% block content %}
+
+<section class="about-page">
+    <div class="container">
+
+        <!-- Page Introduction -->
+        <div class="about-hero">
+            <span class="section-eyebrow">GET TO KNOW ME</span>
+
+            <h1 class="about-main-title">
+                About <span class="hero-highlight">Me</span>
+            </h1>
+
+            <p class="about-intro">
+                I'm a Python backend developer focused on building practical
+                applications, learning modern backend technologies, and
+                improving my problem-solving skills through real projects.
+            </p>
+
+            <div class="about-focus">
+                <div class="about-focus-item">
+                    <i class="bi bi-code-slash"></i>
+                    <span>Backend Development</span>
+                </div>
+
+                <div class="about-focus-item">
+                    <i class="bi bi-database"></i>
+                    <span>Databases & APIs</span>
+                </div>
+
+                <div class="about-focus-item">
+                    <i class="bi bi-lightbulb"></i>
+                    <span>Continuous Learning</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="about-section">
+            <div class="about-section-heading">
+                <span class="section-eyebrow">MY JOURNEY</span>
+                <h2 class="section-title">Experience</h2>
+                <p class="section-description">
+                    My professional experience and development journey.
+                </p>
+            </div>
+
+            <div class="experience-timeline">
+
+                {% for about in abouts %}
+                    <article class="experience-card">
+
+                        <div class="timeline-marker">
+                            <i class="bi bi-briefcase-fill"></i>
+                        </div>
+
+                        <div class="experience-card-content">
+                            <div class="experience-card-top">
+                                <div>
+                                    <h3 class="experience-title">
+                                        {{ about.title }}
+                                    </h3>
+
+                                    <p class="experience-organization">
+                                        <i class="bi bi-building"></i>
+                                        {{ about.organization }}
+                                    </p>
+                                </div>
+
+                                {% if about.is_current %}
+                                    <span class="current-role-badge">
+                                        <span class="status-dot"></span>
+                                        Current
+                                    </span>
+                                {% endif %}
+                            </div>
+
+                            <p class="experience-date">
+                                <i class="bi bi-calendar3"></i>
+                                {{ about.start_date|date:"M Y" }} —
+
+                                {% if about.is_current %}
+                                    Present
+                                {% elif about.end_date %}
+                                    {{ about.end_date|date:"M Y" }}
+                                {% else %}
+                                    Date not specified
+                                {% endif %}
+                            </p>
+
+                            {% if about.description %}
+                                <div class="experience-description">
+                                    {{ about.description|linebreaks }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                    </article>
+
+                {% empty %}
+                    <div class="about-empty-state">
+                        <i class="bi bi-briefcase"></i>
+                        <h3>No experience added yet</h3>
+                        <p>Experience details will appear here when available.</p>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="about-section education-section">
+            <div class="about-section-heading">
+                <span class="section-eyebrow">MY BACKGROUND</span>
+                <h2 class="section-title">Education</h2>
+                <p class="section-description">
+                    My educational background and learning journey.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                {% for about1 in abouts1 %}
+                    <div class="col-md-6">
+                        <article class="education-card">
+
+                            <div class="education-icon">
+                                <i class="bi bi-mortarboard-fill"></i>
+                            </div>
+
+                            <div class="education-year">
+                                {{ about1.year }}
+                            </div>
+
+                            <h3 class="education-qualification">
+                                {{ about1.qualification }}
+                            </h3>
+
+                            <p class="education-institute">
+                                <i class="bi bi-building"></i>
+                                {{ about1.institute }}
+                            </p>
+
+                            {% if about1.description %}
+                                <div class="education-description">
+                                    {{ about1.description|linebreaks }}
+                                </div>
+                            {% endif %}
+
+                        </article>
+                    </div>
+
+                {% empty %}
+                    <div class="col-12">
+                        <div class="about-empty-state">
+                            <i class="bi bi-mortarboard"></i>
+                            <h3>No education details added yet</h3>
+                            <p>Education records will appear here when available.</p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- Closing Call to Action -->
+        <div class="about-cta">
+            <div>
+                <span class="section-eyebrow">LET'S CONNECT</span>
+                <h2>Have a project in mind?</h2>
+                <p>
+                    I'm interested in learning, collaborating, and exploring
+                    backend development opportunities.
+                </p>
+            </div>
+
+            <a href="{% url 'contact' %}" class="btn btn-primary-custom">
+                Get in Touch
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
